@@ -2,8 +2,11 @@ package com.alesandro.ejercicio15b;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+
+import model.Persona;
 
 /**
  * Clase que controla los eventos de la ventana
@@ -19,11 +22,59 @@ public class PersonasController {
     private TextField txtEdad; // Value injected by FXMLLoader
 
     @FXML // fx:id="tabla"
-    private TableView<?> tabla; // Value injected by FXMLLoader
+    private TableView<Persona> tabla; // Value injected by FXMLLoader
 
+    /**
+     * Función que procesa los datos cuándo se pulsa el botón "Agregar Persona"
+     *
+     * @param event
+     */
     @FXML
     void agregar(ActionEvent event) {
-        //
+        String error = "";
+        if (txtNombre.getText().isEmpty()) {
+            error += "El campo nombre es obligatorio";
+        }
+        if (txtApellidos.getText().isEmpty()) {
+            if (!error.isEmpty()) {
+                error += "\n";
+            }
+            error += "El campo apellidos es obligatorio";
+        }
+        if (txtEdad.getText().isEmpty()) {
+            if (!error.isEmpty()) {
+                error += "\n";
+            }
+            error += "El campo edad es obligatorio";
+        } else {
+            try {
+                int edad = Integer.parseInt(txtEdad.getText());
+            } catch (NumberFormatException e) {
+                if (!error.isEmpty()) {
+                    error += "\n";
+                }
+                error += "El campo edad tiene que ser numérico";
+            }
+        }
+        if (!error.isEmpty()) {
+            alerta(error);
+        } else {
+            Persona p = new Persona(txtNombre.getText(), txtApellidos.getText(), Integer.parseInt(txtEdad.getText()));
+            tabla.getItems().addAll(p);
+        }
+    }
+
+    /**
+     * Función que muestra un mensaje de alerta al usuario
+     *
+     * @param texto contenido de la alerta
+     */
+    public void alerta(String texto) {
+        Alert alerta = new Alert(Alert.AlertType.ERROR);
+        alerta.setHeaderText(null);
+        alerta.setTitle("TUS DATOS");
+        alerta.setContentText(texto);
+        alerta.showAndWait();
     }
 
 }
