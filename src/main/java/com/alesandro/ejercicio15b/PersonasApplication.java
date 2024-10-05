@@ -23,8 +23,8 @@ public class PersonasApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(PersonasApplication.class.getResource("/fxml/Personas.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 400, 500);
-        stage.setTitle("PERSONAS");
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        stage.setTitle("Personas");
         stage.setScene(scene);
         stage.show();
     }

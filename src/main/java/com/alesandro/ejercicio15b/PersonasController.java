@@ -2,10 +2,9 @@ package com.alesandro.ejercicio15b;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
+import javafx.scene.control.cell.PropertyValueFactory;
 import model.Persona;
 
 /**
@@ -23,6 +22,26 @@ public class PersonasController {
 
     @FXML // fx:id="tabla"
     private TableView<Persona> tabla; // Value injected by FXMLLoader
+
+    @FXML // fx:id="colNombre"
+    private TableColumn<Persona, String> colNombre; // Value injected by FXMLLoader
+
+    @FXML // fx:id="colApellidos"
+    private TableColumn<Persona, String> colApellidos; // Value injected by FXMLLoader
+
+    @FXML // fx:id="colEdad"
+    private TableColumn<Persona, Integer> colEdad; // Value injected by FXMLLoader
+
+    /**
+     * Función que se ejecuta cuando se inicia la ventana
+     */
+    public void initialize() {
+        colNombre.setCellValueFactory(new PropertyValueFactory("nombre"));
+        colApellidos.setCellValueFactory(new PropertyValueFactory("apellidos"));
+        colEdad.setCellValueFactory(new PropertyValueFactory("edad"));
+
+        tabla.getColumns().setAll(colNombre, colApellidos, colEdad);
+    }
 
     /**
      * Función que procesa los datos cuándo se pulsa el botón "Agregar Persona"
@@ -61,6 +80,7 @@ public class PersonasController {
         } else {
             Persona p = new Persona(txtNombre.getText(), txtApellidos.getText(), Integer.parseInt(txtEdad.getText()));
             tabla.getItems().addAll(p);
+            //confirmacion();
         }
     }
 
@@ -72,8 +92,19 @@ public class PersonasController {
     public void alerta(String texto) {
         Alert alerta = new Alert(Alert.AlertType.ERROR);
         alerta.setHeaderText(null);
-        alerta.setTitle("TUS DATOS");
+        alerta.setTitle("ERROR");
         alerta.setContentText(texto);
+        alerta.showAndWait();
+    }
+
+    /**
+     * Función que muestra un mensaje de confirmación al usuario
+     */
+    public void confirmacion() {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setHeaderText(null);
+        alerta.setTitle("Info");
+        alerta.setContentText("Persona añadida correctamente");
         alerta.showAndWait();
     }
 

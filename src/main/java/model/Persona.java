@@ -1,12 +1,17 @@
 package model;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  * Clase Persona
  */
 public class Persona {
-    private String nombre;
-    private String apellidos;
-    private int edad;
+    private StringProperty nombre;
+    private StringProperty apellidos;
+    private IntegerProperty edad;
 
     /**
      * Constructor con parámetros de persona
@@ -16,9 +21,39 @@ public class Persona {
      * @param edad edad de persona
      */
     public Persona(String nombre, String apellidos, int edad) {
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.edad = edad;
+        this.setNombre(nombre);
+        this.setApellidos(apellidos);
+        this.setEdad(edad);
+    }
+
+    /**
+     * Valor del nombre
+     *
+     * @return nombre
+     */
+    public StringProperty nombreProperty() {
+        if (nombre == null) nombre = new SimpleStringProperty(this, "nombre");
+        return nombre;
+    }
+
+    /**
+     * Valor de los apellidos
+     *
+     * @return apellidos
+     */
+    public StringProperty apellidosProperty() {
+        if (apellidos == null) apellidos = new SimpleStringProperty(this, "apellidos");
+        return apellidos;
+    }
+
+    /**
+     * Valor de la edad
+     *
+     * @return edad
+     */
+    public IntegerProperty edadProperty() {
+        if (edad == null) edad = new SimpleIntegerProperty(this, "edad");
+        return edad;
     }
 
     /**
@@ -27,7 +62,7 @@ public class Persona {
      * @return nombre de persona
      */
     public String getNombre() {
-        return nombre;
+        return nombreProperty().get();
     }
 
     /**
@@ -36,7 +71,7 @@ public class Persona {
      * @param nombre nuevo nombre de persona
      */
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        nombreProperty().set(nombre);
     }
 
     /**
@@ -45,7 +80,7 @@ public class Persona {
      * @return apellidos de persona
      */
     public String getApellidos() {
-        return apellidos;
+        return apellidosProperty().get();
     }
 
     /**
@@ -54,7 +89,7 @@ public class Persona {
      * @param apellidos nuevos apellidos de persona
      */
     public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+        apellidosProperty().set(apellidos);
     }
 
     /**
@@ -63,7 +98,7 @@ public class Persona {
      * @return edad de persona
      */
     public int getEdad() {
-        return edad;
+        return edadProperty().get();
     }
 
     /**
@@ -72,7 +107,7 @@ public class Persona {
      * @param edad nueva edad de persona
      */
     public void setEdad(int edad) {
-        this.edad = edad;
+        edadProperty().set(edad);
     }
 
 }

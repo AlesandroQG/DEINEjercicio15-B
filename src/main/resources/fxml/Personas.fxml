@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/22">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.alesandro.ejercicio15b.PersonasController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="296.0" minWidth="10.0" prefWidth="208.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="392.0" minWidth="10.0" prefWidth="392.0" />
@@ -60,9 +60,9 @@
       </VBox>
       <TableView fx:id="tabla" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
         <columns>
-          <TableColumn minWidth="-1.0" prefWidth="150.0" text="NOMBRE" />
-          <TableColumn prefWidth="150.0" text="APELLIDOS" />
-            <TableColumn text="EDAD" />
+          <TableColumn fx:id="colNombre" minWidth="-1.0" prefWidth="150.0" text="NOMBRE" />
+          <TableColumn fx:id="colApellidos" prefWidth="150.0" text="APELLIDOS" />
+            <TableColumn fx:id="colEdad" text="EDAD" />
         </columns>
       </TableView>
    </children>
