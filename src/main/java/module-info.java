@@ -6,4 +6,5 @@ module com.alesandro.ejercicio15b {
 
     opens com.alesandro.ejercicio15b to javafx.fxml;
     exports com.alesandro.ejercicio15b;
+    exports com.alesandro.model;
 }

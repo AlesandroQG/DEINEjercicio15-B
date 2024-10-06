@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import javafx.scene.control.cell.PropertyValueFactory;
-import model.Persona;
+import com.alesandro.model.Persona;
 
 /**
  * Clase que controla los eventos de la ventana
