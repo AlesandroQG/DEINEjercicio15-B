@@ -80,7 +80,7 @@ public class PersonasController {
         } else {
             Persona p = new Persona(txtNombre.getText(), txtApellidos.getText(), Integer.parseInt(txtEdad.getText()));
             tabla.getItems().addAll(p);
-            //confirmacion();
+            confirmacion();
         }
     }
 
