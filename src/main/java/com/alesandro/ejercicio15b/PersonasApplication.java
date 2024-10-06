@@ -3,6 +3,7 @@ package com.alesandro.ejercicio15b;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -25,6 +26,7 @@ public class PersonasApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(PersonasApplication.class.getResource("/fxml/Personas.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
         stage.setTitle("Personas");
+        stage.getIcons().add(new Image(PersonasApplication.class.getResourceAsStream("/images/PersonaApp.png")));
         stage.setScene(scene);
         stage.show();
     }
